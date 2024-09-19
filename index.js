@@ -1,5 +1,17 @@
+//! Capturing VS Bubbling
 document.addEventListener('DOMContentLoaded', () => {
-    document.querySelector('#item-1').addEventListener('click', e => {
-        e.stopPropagation();
-    })
-})
+    document.querySelector('body').addEventListener('click', e => {
+        // e.stopPropagation();
+        alert("Body")
+    }, true)
+    document.querySelector('#list').addEventListener('click', e => {
+        // e.stopPropagation();
+        alert("Ul")
+    }, true)
+    document.querySelectorAll('li').forEach(li => {
+        li.addEventListener('click', (e) => {
+            // e.stopPropagation();
+            alert(e.target.id)
+        }, true)
+    });
+});
